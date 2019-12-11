@@ -71,13 +71,17 @@ let pokeStore = [{
     "hp": "0",
     "price" : "200"
 }];
-
-
+function onloadw(){
+  setTimeout(function(){
+    onload()
+  },500)
+}
+function onload(){
 let playerName = prompt("What is your name");
 
 
 // Creates the players pokemon container, wallet and item space.
-let pokeBox = []; 
+let pokeBox = [];
 let pokeMoney = 0;
 let pokeItems  = [];
 
@@ -89,10 +93,10 @@ while(!hasPokemonBeenChosen)
    if(startingChoice >= 1 && startingChoice <=3) {
      pokeBox.push(starterKantoPokemon[startingChoice - 1]);
      hasPokemonBeenChosen = true;
-   } 
+   }
 }
-console.log('Professor Oak: Hmm...' + pokeBox[0].name + '. Good choice' + " " + playerName + "!");
-console.log('You will need some money here is a band. Try buying something.');
+ATDL('Professor Oak: Hmm...' + pokeBox[0].name + '. Good choice' + " " + playerName + "!");
+ATDL('You will need some money here is a band. Try buying something.');
 pokeMoney += 1000;
 
 //Has you buy something
@@ -112,16 +116,16 @@ while(!hasBoughtItem){
             hasBoughtItem = true;
             
         } else{
-            console.log("fuck you");
-        } 
+            ATDL("fuck you");
+        }
       }
     }else{
-        console.log("okay loser");
+        ATDL("okay loser");
         hasBoughtItem = true;
     }
 }
 
-console.log("You are going to use your first pokemon " + pokeBox[0].name + " to fight a " + wildPokemon[0].name)
+ATDL("You are going to use your first pokemon " + pokeBox[0].name + " to fight a " + wildPokemon[0].name)
 
 
 
@@ -137,18 +141,18 @@ if(!firstFight){
     wildPokemon[0].hp -= pokeBox[0].attack.hp;
 
     if (wildPokemon[0].hp <= 0) {
-      console.log("You have won!");
+      ATDL("You have won!");
       firstFight = true;
     } else {
-      console.log(wildPokemon[0].hp);
+      ATDL(wildPokemon[0].hp);
     }
 
     pokeBox[0].hp -= wildPokemon[0].attack.hp;
     if (!firstFight && pokeBox[0].hp <= 0) {
-      console.log(wildPokemon[0].name + " has killed you");
+      ATDL(wildPokemon[0].name + " has killed you");
       firstFight = true;
     } else {
-      console.log(pokeBox[0].hp);
+      ATDL(pokeBox[0].hp);
     }
 
 }
@@ -158,27 +162,38 @@ if(!firstFight){
 if(pokeItems[0].item.includes("Poke Ball") == true){
     if(enemyPercent < 40){
         pokeBox.push(wildPokemon[0]);
-        console.log("Pusheddd");
+        ATDL("Pusheddd");
         pokeItems.shift();
         firstFight = true;
     }else{
-        console.log("Try attacking");
+        ATDL("Try attacking");
     }
 }else{
-    console.log("You need to buy pokeball");
+    ATDL("You need to buy pokeball");
 }
 }else if(fightOptions == 3){
 
     if(pokeItems[0].item.includes("Potion") == true){
         pokeBox[0].hp += pokeItems[0].hp;
         pokeItems.shift();
-        console.log("You have healed urrr pokemon");
+        ATDL("You have healed urrr pokemon");
     }else{
-        console.log("You need to buy some Potions");
+        ATDL("You need to buy some Potions");
     }
 
 }else{
         
 }
 
+}
+}
+
+function ATDL(message){
+    //alert(message);
+    console.log(message);
+    var log = document.createElement("P"); /*innerHTML = DevLog*/
+    log.innerHTML = message;
+    document.getElementById('Text').appendChild(log);
+    var elem = document.getElementById('Text');
+    elem.scrollTop = elem.scrollHeight;
 }
