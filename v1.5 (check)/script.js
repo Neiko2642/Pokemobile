@@ -73,19 +73,10 @@ let pokeStore = [{
 }];
 //vars
 let pokeBox = [];
-  let pokeMoney = 0;
-  let pokeItems  = [];
+let pokeMoney = 0;
+let pokeItems  = [];
 let hasPokemonBeenChosen = false;
-let startingChoice;
-let playerName
-let hasBoughtItem
-let startingItem
-let amount
-let firstFight
-let enemyPokemon
-let fightOptions
-let enemyPercent
-let Fight
+let startingChoice, playerName, hasBoughtItem, startingItem, amount, firstFight, enemyPokemon, fightOptions, enemyPercent, Fight;
 
 function onloadw(){
   setTimeout(function(){
