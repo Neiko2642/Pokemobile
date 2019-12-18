@@ -1,24 +1,3 @@
-//Creates the object for the pokestore
-let pokeStore = [{
-    "item" : "Poke Ball",
-    "hp": "0",
-    "price" : "200"
-},
-{
-    "item" : "Potion",
-    "hp": 100,
-    "price" : "300"
-},
-{
-    "item" : "Antidote",
-    "hp": "0",
-    "price" : "100"
-},
-{
-    "item" : "Parlyz Heal",
-    "hp": "0",
-    "price" : "200"
-}];
 //vars
 let pokeBox = [];
 let pokeMoney = 0;
@@ -140,14 +119,14 @@ if(pokeItems[0].item.includes("Poke Ball") == true){
         ATDL("Try attacking");
     }
 }else{
-    ATDL("You need to buy pokeball");
+  ATDL(": You need to buy pokeball");
 }
 }else if(fightOptions == 3){
 
     if(pokeItems[0].item.includes("Potion") == true){
         pokeBox[0].hp += pokeItems[0].hp;
         pokeItems.shift();
-        ATDL("You have healed urrr pokemon");
+        ATDL(": You have healed urrr pokemon");
     }else{
         ATDL("You need to buy some Potions");
     }
